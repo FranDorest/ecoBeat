@@ -28,7 +28,7 @@
 #include "SoftwareSerial.h"
 #include "wifi.h"
 
-SoftwareSerial tinySerial(D2, D1);
+SoftwareSerial tinySerial(D1, D2);
 
 String input_string="";
 String last_datastr="";

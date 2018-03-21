@@ -2,7 +2,8 @@
 
 SoftwareSerial atSerial(3,4); //Comunicacion serie con ESP8266 
 long pulseCount = 0; //Numero de pulsos en 1 minuto
-unsigned long lastTime, sendTime; // Diferencia de tiempo entre el ultimo envio y la comprobacion
+unsigned long lastTime = 0; 
+unsigned long sendTime = 0; // Diferencia de tiempo entre el ultimo envio y la comprobacion
 
 void setup(){
   atSerial.begin(9600); // Comunicacion serie a 115200 baudios
@@ -18,23 +19,16 @@ void loop(){
 
 void onPulse(){ // Rutina de interrupcion
   pulseCount ++;
-  digitalWrite(0, HIGH);
-  delay(50);
-  digitalWrite(0, LOW);
+  digitalWrite(0, !digitalRead(0));
 
   //enviamos la lectura una vez recibimos el pulso
-  lastTime = micros();
+  lastTime = millis();
   
-  if(lastTime - sendTime >= 60000000){ //Enviamos la cantidad de pulsos cada 60000000 microsegundos (60segundos)
+  if(lastTime - sendTime >= 60000){ //Enviamos la cantidad de pulsos cada 60000 milisegundos (60segundos)
     noInterrupts();
-    sendTime = micros();
-    digitalWrite(1, HIGH);
-    delay(40);
-    atSerial.print(pulseCount);
-    delay(1);
-    atSerial.print('\n');
+    sendTime = lastTime;
+    atSerial.println(pulseCount);
     pulseCount = 0;
-    digitalWrite(1, LOW);
     interrupts();
   }
 }

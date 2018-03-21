@@ -638,7 +638,7 @@ $EndComp
 Wire Wire Line
 	8200 3950 8200 3750
 Wire Wire Line
-	7600 3950 8200 3950
+	7600 3950 7800 3950
 Wire Wire Line
 	7600 4050 8200 4050
 Wire Wire Line
@@ -732,8 +732,21 @@ F 3 "" H 7700 3550 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7700 3550 7700 3950
+	7700 3950 7700 3550
 Connection ~ 7700 3950
 Wire Wire Line
 	4700 2250 5150 2250
+$Comp
+L D D?
+U 1 1 5AAA6483
+P 7950 3950
+F 0 "D?" H 7950 4050 50  0000 C CNN
+F 1 "D" H 7950 3850 50  0000 C CNN
+F 2 "" H 7950 3950 50  0000 C CNN
+F 3 "" H 7950 3950 50  0000 C CNN
+	1    7950 3950
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8200 3950 8100 3950
 $EndSCHEMATC
