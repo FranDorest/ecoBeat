@@ -1,4 +1,4 @@
-# PCB ecoBeat 4
+# PCB ecoBeat 3
 
 Se ha creado una nueva PCB que se adapta a las medidas de una caja de montaje en carril DIN.
 
@@ -42,7 +42,7 @@ A continuación aparecen los materiales que se necesitarán para construir la pl
 ## Autores
 
 * **Francisco Doreste** 
-* **Oscar Pujal** - *Supervisión* 
+* **Oscar Pujal** 
 
 
 ## Licencia
