@@ -1,10 +1,11 @@
 #include <SoftwareSerial.h>
 
-#define DEBOUNCE 10
+#define DEBOUNCE 10                       //ms minimos entre interrupciones para evitar rebotes
 
 bool interruptEnabled = true;
+bool isSending = false;
 
-unsigned long pulseCount = 0;                      //Numero de pulsos en 1 minuto
+unsigned long pulseCount = 0;             //Numero de pulsos en 1 minuto
 unsigned long lastTime = 0;
 unsigned long interruptTime = 0;          // Diferencia de tiempo entre el ultimo envio y la comprobacion
 
@@ -21,16 +22,27 @@ void setup(){
 }
 
 void loop(){
+
+  unsigned long currentTime;
   
   if(millis() - interruptTime >= DEBOUNCE && !interruptEnabled){  //activamos interrupciones 10ms despues 
-    interrupts();                                           //de cada interrupcion para evitar rebotes.
+    interrupts();                                                 //de cada interrupcion para evitar rebotes.
     interruptEnabled = true;
   }
-
-  if(millis() - lastTime >= 60000){
+  
+  if (millis() < lastTime){
+    currentTime = lastTime + millis();
+  }
+  else{
+    currentTime = millis;
+  }
+  
+  if(currentTime - lastTime >= 60000){
+    isSending = true;
     lastTime = millis();
     atSerial.println(pulseCount);
     pulseCount = 0;
+    isSending = false;
   }
 }
 
