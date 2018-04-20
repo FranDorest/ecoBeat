@@ -35,7 +35,7 @@ DNSServer dnsServer;                  // Create class DNS server, captive portal
 const byte DNS_PORT = 53;
 
 // Access Point SSID, password & IP address. SSID will be softAP_ssid + chipID to make SSID unique
-const char *softAP_ssid = "emonESP";
+const char *softAP_ssid = "ecoBeat";
 const char* softAP_password = "";
 IPAddress apIP(192, 168, 4, 1);
 IPAddress netMsk(255, 255, 255, 0);
@@ -55,7 +55,8 @@ String ipend4 = "";
 unsigned long Timer;
 String st, rssi;
 
-#ifdef WIFI_LED
+#ifndef WIFI_LED
+#define WIFI_LED D0
 #ifndef WIFI_LED_ON_STATE
 #define WIFI_LED_ON_STATE LOW
 #endif
@@ -82,6 +83,7 @@ int wifi_mode = WIFI_MODE_STA;
 // -------------------------------------------------------------------
 void startAP() {
   DEBUG.print("Starting AP");
+  digitalWrite(WIFI_LED, LOW);
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
   delay(100);
@@ -175,6 +177,7 @@ void startClient() {
     sprintf(tmpStr, "%d.%d.%d.%d", myAddress[0], myAddress[1], myAddress[2],
             myAddress[3]);
     DEBUG.print("Connected, IP: ");
+    digitalWrite(WIFI_LED, HIGH);
     DEBUG.println(tmpStr);
     ipend1 = myAddress[0];
   ipend2 = myAddress[1];

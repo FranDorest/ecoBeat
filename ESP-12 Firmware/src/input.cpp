@@ -28,12 +28,15 @@
 #include "SoftwareSerial.h"
 #include "wifi.h"
 
-SoftwareSerial tinySerial(D1, D2);
+SoftwareSerial tinySerial(D2, D1);
 
 String input_string="";
 String last_datastr="";
 unsigned int lastSended;
 unsigned int currentTime;
+unsigned int delta_pulsos = 0;
+unsigned int pulsos_actual = 0;
+unsigned int pulsos_anterior = 0;
 
 boolean input_get(String& data){
 
@@ -62,31 +65,34 @@ boolean input_get(String& data){
     Serial.println(currentTime);
     // Could check for string integrity here
     String tinyString = tinySerial.readStringUntil('\n');
-    double power, mspp, energy;
-    int pulsos;
-    pulsos = tinyString.toInt();
-    if(pulsos == 0){
+    double power, energy;
+    pulsos_actual = tinyString.toInt();
+    delta_pulsos = pulsos_actual - pulsos_anterior;
+    
+    if(delta_pulsos <= 0){
       power = 0.00;
-      energy = 0.00;
+      energy = pulsos_actual;
     }
     else{
-      power = 3600000/((currentTime-lastSended)/pulsos);
-      energy = pulsos;
+      power = 3600000/((currentTime-lastSended)/delta_pulsos);
+      energy = pulsos_actual;
+      pulsos_anterior = pulsos_actual;
     }
     data = "Potencia:";
     data += String(power);
     data += ",Energia:";
     data += String(energy);
     data += ",pulsos:";
-    data +=String(pulsos);
-    data += ",ip1:";
+    data +=String(delta_pulsos);
+    data += ",";
     data +=String(ipend1);
-    data += ",ip2:";
+    data += ".";
     data +=String(ipend2);
-    data += ",ip3:";
+    data += ".";
     data +=String(ipend3);
-    data += ",ip4:";
+    data += ".";
     data +=String(ipend4);
+    data += ":1";
     gotData = true;
   }
 

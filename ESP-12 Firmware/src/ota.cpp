@@ -47,6 +47,7 @@ void ota_setup()
 {
   // Start local OTA update server
   ArduinoOTA.setHostname(esp_hostname);
+  ArduinoOTA.setPassword("10121993fdm");
   ArduinoOTA.begin();
   #ifdef WIFI_LED
   ArduinoOTA.onProgress([](unsigned int pos, unsigned int size) {
