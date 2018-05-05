@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:ecoBeat_3-rescue
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -100,7 +101,7 @@ F 3 "" H 4250 4200 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED D2
+L LED-RESCUE-ecoBeat_3 D2
 U 1 1 5A83FD4B
 P 9350 4900
 F 0 "D2" H 9350 5000 50  0000 C CNN
@@ -111,7 +112,7 @@ F 3 "" H 9350 4900 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED D3
+L LED-RESCUE-ecoBeat_3 D3
 U 1 1 5A83FEA4
 P 9350 5200
 F 0 "D3" H 9350 5300 50  0000 C CNN
@@ -122,7 +123,7 @@ F 3 "" H 9350 5200 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED D4
+L LED-RESCUE-ecoBeat_3 D4
 U 1 1 5A83FF0F
 P 9350 5500
 F 0 "D4" H 9350 5600 50  0000 C CNN
