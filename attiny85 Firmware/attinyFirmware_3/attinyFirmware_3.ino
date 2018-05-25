@@ -1,6 +1,6 @@
 #include <SoftwareSerial.h>
 
-#define DEBOUNCE 10                       //ms minimos entre interrupciones para evitar rebotes
+#define DEBOUNCE 10                     //ms minimos entre interrupciones para evitar rebotes
 
 bool interruptEnabled = true;
 

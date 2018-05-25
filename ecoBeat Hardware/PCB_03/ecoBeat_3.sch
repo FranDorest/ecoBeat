@@ -713,8 +713,6 @@ $EndComp
 Wire Wire Line
 	7700 3950 7700 3550
 Connection ~ 7700 3950
-Wire Wire Line
-	4700 2250 5150 2250
 $Comp
 L D D1
 U 1 1 5AAA6483
@@ -752,4 +750,6 @@ F 3 "" H 3800 1950 50  0001 C CNN
 	1    3800 1950
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	4700 2250 5150 2250
 $EndSCHEMATC
