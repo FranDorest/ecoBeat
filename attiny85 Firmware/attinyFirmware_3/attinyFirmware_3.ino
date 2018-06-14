@@ -13,7 +13,7 @@ SoftwareSerial atSerial(4,3);             //Comunicacion serie con ESP8266
 
 void setup(){
 
-  atSerial.begin(9600);                   // Comunicacion serie a 9600 baudios
+  atSerial.begin(115200);                   // Comunicacion serie a 9600 baudios
   
   pinMode(0, OUTPUT);                     // Led de confirmacion de interrupcion
   pinMode(1, OUTPUT);                     // Pin de interrupcion al ESP8266
@@ -37,6 +37,7 @@ void loop(){
   
   if(currentTime - lastTime >= 60000){
     lastTime = millis();
+    atSerial.print("imp:");
     atSerial.println(pulseCount);
   }
 }
@@ -49,4 +50,5 @@ void onPulse(){// Rutina de interrupcion
   pulseCount ++;
   digitalWrite(0, !digitalRead(0));
 }
+
 
