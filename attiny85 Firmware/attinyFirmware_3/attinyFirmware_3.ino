@@ -4,10 +4,11 @@
 
 bool interruptEnabled = true;
 
-unsigned long pulseCount = 0;             //Numero de pulsos en 1 minuto
-unsigned long lastTime = 0;
-unsigned long interruptTime = 0;          // Diferencia de tiempo entre el ultimo envio y la comprobacion
-unsigned long currentTime = 0;
+unsigned long pulseCount = 0;             //Suma de Pulsos
+unsigned long pulseAnterior = 0;          //pulsos anterior para calcular pulsos por minuto
+unsigned long lastTime = 0;               // Diferencia de tiempo entre el ultimo envio y la comprobacion
+unsigned long interruptTime = 0;          //Tiempo en el que se inicia la interrupcion
+unsigned long long currentTime = 0;            //guarda el valor de millis()
 
 SoftwareSerial atSerial(4,3);             //Comunicacion serie con ESP8266
 
@@ -37,8 +38,11 @@ void loop(){
   
   if(currentTime - lastTime >= 60000){
     lastTime = millis();
-    atSerial.print("imp:");
-    atSerial.println(pulseCount);
+    atSerial.print("imp_total:");
+    atSerial.print(pulseCount);
+    atSerial.print(",imp_min:");
+    atSerial.println(pulseCount - pulseAnterior);
+    pulseAnterior = pulseCount;
   }
 }
 
