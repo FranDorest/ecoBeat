@@ -37,6 +37,21 @@ A continuación aparecen los materiales que se necesitarán para construir la pl
 
 * [KiCad 4.0.2](http://kicad-pcb.org/) - Diseño electrónico
 
+## Consumos
+
+*Se ha realizado una prueba para conocer los consumos del equipo en todas sus modos de trabajo en su versión de 5V.
+
+                      Con LEDs          Sin LEDs
+
+*AP ->                87 - 88           85-86         mA 
+
+*STA + AP ->          87 - 88           85 - 86       mA
+
+* STA ->              85.5 - 86.5       83.5 - 84.5   mA
+
+*Envío de datos ->    86.5 - 87.5       84.5 - 85.5   mA
+
+*Vmax 12V. El regulador se calentará hasta los 65ºC y consumirá 84,5mA.
 
 
 ## Autores
