@@ -39,7 +39,7 @@ A continuación aparecen los materiales que se necesitarán para construir la pl
 
 ## Consumos
 
-*Se ha realizado una prueba para conocer los consumos del equipo en todas sus modos de trabajo en su versión de 5V.
+*Se ha realizado una prueba para conocer los consumos del equipo en todos sus modos de trabajo en su versión de 5V.
 
 Modo | Con LEDs | Sin LEDs | Un
 --- | --- | --- | ---
