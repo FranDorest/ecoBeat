@@ -49,7 +49,8 @@ Una vez se haya completado la configuración anterior podemos conectar el ATtiny
 | PIN 10 | PIN 1 |
 
 > **Nota:** Añadiendo un condensador electrolítico de 10uF entre RESET y GND en el Arduino UNO evita que se produzca un RESET mientras cargamos el Firmware al ATtiny85.
- -Un circulo sobre el microcontrolador marca la posición del pin 1.
+
+>**Nota:** -Un circulo sobre el microcontrolador marca la posición del pin 1.
 
 ## CARGAR EL CÓDIGO AL ATTINY
 
