@@ -14,7 +14,7 @@ SoftwareSerial atSerial(4,3);             //Comunicacion serie con ESP8266
 
 void setup(){
 
-  atSerial.begin(115200);                   // Comunicacion serie a 9600 baudios
+  atSerial.begin(115200);                   // Comunicacion serie a 115200 baudios
   
   pinMode(0, OUTPUT);                     // Led de confirmacion de interrupcion
   pinMode(1, OUTPUT);                     // Pin de interrupcion al ESP8266
